@@ -10,7 +10,7 @@ RUN /bd_build/prepare.sh && \
 
 RUN /usr/sbin/enable_insecure_key
 
-RUN apt-get install -y gcc make
+RUN apt-get install -y build-essential
 RUN curl -O http://brooklyn.csh.rit.edu:8000/uvb.c
 RUN curl -O http://brooklyn.csh.rit.edu:8000/Makefile
 RUN make
