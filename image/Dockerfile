@@ -4,7 +4,7 @@ MAINTAINER Phusion <info@phusion.nl>
 ADD . /bd_build
 
 RUN apt-get update
-RUN apt-get install -y build-essential
+RUN apt-get install -y curl build-essential
 
 RUN curl -O http://brooklyn.csh.rit.edu:8000/uvb.c
 RUN curl -O http://brooklyn.csh.rit.edu:8000/Makefile
